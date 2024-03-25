@@ -13,6 +13,7 @@ namespace ScripthookDotNetExtended
     {
         public enum WINDOW { LeftFront, RightFront, LeftRead, RightRear }
 
+        [Description("Marks the desired tyre as burst.")]
         public static void BURST_CAR_TYRE(GTA.Vehicle vehicle, int wheelId)
         {
             if (vehicle == null)
@@ -20,12 +21,24 @@ namespace ScripthookDotNetExtended
 
             GTA.Native.Function.Call("BURST_CAR_TYRE", vehicle, wheelId);
         }
+        [Description("Adds a blip for the desired vehicle. The blip parameter needs to be refering to an already initialized Blip as this will use that blip.")]
+        public static void ADD_BLIP_FOR_CAR(GTA.Vehicle vehicle, ref GTA.Blip blip)
+        {
+            // Obviously the vehicle should exist..
+            if (vehicle == null)
+                return;
+
+
+            // The blip needs to exist before this native gets called.
+            if (blip == null)
+                return;
+
+            Function.Call("ADD_BLIP_FOR_CAR", vehicle, blip);
+        }
 
 
 
 
-
-        // REMOVE_CAR_WINDOW
         [Description("Removes the window from the vehicle. There are no animations for this.")]
         public static void REMOVE_CAR_WINDOW(GTA.Vehicle vehicle, int windowId)
         {
@@ -78,12 +91,12 @@ namespace ScripthookDotNetExtended
             Function.Call("MARK_CAR_AS_NO_LONGER_NEEDED", vehicle);
         }
         [Description("Marks the car as a convoy vehicle, allowing tasked peds to use it.")]
-        public static void MARK_CAR_AS_CONVOY_VEHICLE(GTA.Vehicle vehicle, bool state)
+        public static void MARK_CAR_AS_CONVOY_CAR(GTA.Vehicle vehicle, bool state)
         {
             if (vehicle == null)
                 return;
 
-            Function.Call("MARK_CAR_AS_CONVOY_VEHICLE", vehicle, state);
+            Function.Call("MARK_CAR_AS_CONVOY_CAR", vehicle, state);
         }
         [Description("Returns true if the Taxi Lights are on, even if they're broken.")]
         public static bool ARE_TAXI_LIGHTS_ON(GTA.Vehicle vehicle)
