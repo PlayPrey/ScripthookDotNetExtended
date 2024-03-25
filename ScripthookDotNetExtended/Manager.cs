@@ -26,9 +26,8 @@ namespace ScripthookDotNetExtended
             {
                 if(Player.Character.CurrentVehicle != null)
                 {
-                    Blip blip = new Blip(38891);
-
-                    Vehicle.ADD_BLIP_FOR_CAR(Player.Character.CurrentVehicle, ref blip);
+                    Vehicle.APPLY_FORCE_TO_CAR(Player.Character.CurrentVehicle, 2, 600f, 40f, 0f, 100f, 0f, 0f, false, true, false, true);
+                    
                     
                 }
             }
