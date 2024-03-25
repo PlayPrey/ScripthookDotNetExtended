@@ -77,6 +77,7 @@ namespace ScripthookDotNetExtended
 
             Function.Call("MARK_CAR_AS_NO_LONGER_NEEDED", vehicle);
         }
+        [Description("Marks the car as a convoy vehicle, allowing tasked peds to use it.")]
         public static void MARK_CAR_AS_CONVOY_VEHICLE(GTA.Vehicle vehicle, bool state)
         {
             if (vehicle == null)
